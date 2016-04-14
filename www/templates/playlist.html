@@ -1,0 +1,33 @@
+<ion-view view-title={{id}}>
+  <ion-content>
+    <ion-refresher pulling-text="Оновлення" on-refresh="refresh()">
+    </ion-refresher>
+    <button ng-click="downloadFile()" >Завантажити</button>
+    <i ng-repeat="group in data" class="item-text-wrap">
+      <ion-item class="item-stable"
+                ng-click="toggleGroup(group)"
+                ng-class="{active: isGroupShown(group)}"
+      >
+        <i class="icon" ng-class="isGroupShown(group) ? 'ion-android-folder-open' : 'ion-android-folder'"></i>
+        &nbsp;
+        {{group.caption}}
+        {{group.item_type}}
+        <button ng-click="downloadFile()" >Завантажити</button>
+      </ion-item>
+      <ion-item class="item-accordion"
+                ng-repeat="item in group.items"
+                ng-show="isGroupShown(group)"
+                href="#/app/playlists/{{item.id}}"
+      >
+        {{item.caption}}
+        <p>{{item.post_date}} </p>
+        <p>{{item.item_type}}</p>
+        <p>{{item.id}}</p>
+
+        <button class="button" ng-click="download()">Download</button>
+
+        <button ng-click="downloadFile()" >Завантажити</button>
+      </ion-item>
+    </i>
+  </ion-content>
+</ion-view>

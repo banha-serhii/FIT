@@ -1,0 +1,12 @@
+<ion-view  view-title="FIT">
+  <ion-content >
+    <ion-refresher pulling-text="Оновлення" on-refresh="refresh()"  pulling-icon="ion-ionic">
+    </ion-refresher>
+    <ion-item
+      ng-repeat="faculties in data"
+      class="item-text-wrap"
+      href="#/app/playlists/{{faculties.id}}">
+      {{faculties.caption}}
+    </ion-item>
+  </ion-content>
+</ion-view>
